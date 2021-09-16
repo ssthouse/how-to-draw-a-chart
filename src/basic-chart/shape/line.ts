@@ -1,15 +1,20 @@
 import Point from "./point";
+import { Color } from "./shape";
 
 export interface LineStyle {
   width?: number;
   fillStyle?: "solid" | "dashed";
-  color?: "black" | "white" | "red" | "blue" | "yellow";
+  color?: Color;
 }
 
 class Line {
   public startPoint: Point;
   public endPoint: Point;
-  public lineStyle: LineStyle;
+  public lineStyle: LineStyle = {
+    color: "black",
+    fillStyle: "solid",
+    width: 1
+  };
 
   constructor(startPoint: Point, endPoint: Point) {
     this.startPoint = startPoint;

@@ -1,12 +1,18 @@
 import { LineStyle } from "./line";
+import { Color } from "./shape";
 
 class Rect {
-  public left: number;
-  public top: number;
-  public right: number;
-  public bottom: number;
-  public borderRadius = 0;
-  public borderStyle: LineStyle;
+  left: number;
+  top: number;
+  right: number;
+  bottom: number;
+  borderRadius = 0;
+  borderStyle: LineStyle = {
+    color: "black",
+    width: 1
+  };
+  isFill: boolean = false;
+  fillColor: Color = "transparent";
 
   constructor({
     left,
