@@ -1,25 +1,15 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import { renderLine } from "../../basic-chart/render/dom-render";
 import LineShape from "../../basic-chart/shape/line";
 import Point from "../../basic-chart/shape/point";
+import DomShapeViewer from "./dom-shape-viewer";
 
 const Line: React.FC = () => {
-  const testLine = new LineShape(new Point(10, 10), new Point(30, 20));
-  const containerRef = useRef(null);
-  useEffect(() => {
-    containerRef.current.replaceChildren(renderLine(testLine));
+  const domElement = useMemo(() => {
+    const testLine = new LineShape(new Point(10, 10), new Point(30, 20));
+    return renderLine(testLine);
   }, []);
-  return (
-    <div
-      style={{
-        backgroundColor: "white",
-        width: 300,
-        height: 300,
-        position: "relative"
-      }}
-      ref={containerRef}
-    ></div>
-  );
+  return <DomShapeViewer domElement={domElement} />;
 };
 
 export default Line;

@@ -1,8 +1,8 @@
 import "./styles.less";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import DomChart from "./components/dom-chart/dom-chart";
-import SvgChart from "./components/svg-chart/svg-chart";
-import CanvasChart from "./components/canvas-chart/canvas-chart";
+import DomChart from "./components/dom-chart/index";
+import SvgChart from "./components/svg-chart/index";
+import CanvasChart from "./components/canvas-chart/index";
 
 export default function App() {
   return (
