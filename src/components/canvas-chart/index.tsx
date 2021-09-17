@@ -17,10 +17,11 @@ interface BasicCanvasShapeProps {
 }
 const BasicCanvasShapeViewer: React.FC<BasicCanvasShapeProps> = ({ shape }) => {
   const canvasRef = useRef();
-
+  const canvasSize = 300;
   useEffect(() => {
     const canvas = canvasRef.current as HTMLCanvasElement;
     const ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvasSize, canvasSize);
     if (shape instanceof Line) {
       renderLine(ctx, shape as Line);
       return;
@@ -41,8 +42,8 @@ const BasicCanvasShapeViewer: React.FC<BasicCanvasShapeProps> = ({ shape }) => {
     <canvas
       style={{ backgroundColor: "white" }}
       ref={canvasRef}
-      width="300"
-      height="300"
+      width={canvasSize}
+      height={canvasSize}
     ></canvas>
   );
 };
@@ -79,7 +80,7 @@ const RectShapeViewer: React.FC = () => {
 const TextShapeViewer: React.FC = () => {
   const text = useMemo(() => {
     const text = new TextShape("Hello world", 120, 120);
-    text.fontSize = 100;
+    text.fontSize = 30;
     return text;
   }, []);
   return <BasicCanvasShapeViewer shape={text} />;

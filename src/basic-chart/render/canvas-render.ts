@@ -40,7 +40,8 @@ export function renderRect(ctx: CanvasRenderingContext2D, rect: Rect) {
   ctx.arcTo(left, top, right - width / 2, top, borderRadius); // 上边中点
   ctx.arcTo(right, top, right, top + height / 2, borderRadius); // 右边中点
   ctx.arcTo(right, bottom, right - width / 2, bottom, borderRadius); // 下边中点
-  ctx.arcTo(left, bottom, left, bottom - height / 2, borderRadius);
+  ctx.arcTo(left, bottom, left, bottom - height / 2, borderRadius); // 左边中点
+  ctx.lineTo(left, top + height / 2);
   if (rect.isFill) {
     ctx.fillStyle = rect.fillColor;
     ctx.fill();
