@@ -1,6 +1,7 @@
 import Circle from "../shape/circle";
 import Line from "../shape/line";
 import Rect from "../shape/rect";
+import { Shape } from "../shape/shape";
 import Text from "../shape/text";
 
 export function renderLine(ctx: CanvasRenderingContext2D, line: Line): void {
@@ -56,4 +57,27 @@ export function renderText(ctx: CanvasRenderingContext2D, text: Text): void {
   ctx.font = `${text.fontSize}px serif`;
   ctx.textBaseline = "top";
   ctx.fillText(text.content, text.left, text.top);
+}
+
+export function renderShapes(
+  ctx: CanvasRenderingContext2D,
+  shapes: Shape[]
+): void {
+  for (const shape of shapes) {
+    if (shape instanceof Line) {
+      renderLine(ctx, shape);
+      continue;
+    }
+    if (shape instanceof Circle) {
+      renderCircle(ctx, shape);
+      continue;
+    }
+    if (shape instanceof Rect) {
+      renderRect(ctx, shape);
+      continue;
+    }
+    if (shape instanceof Text) {
+      renderText(ctx, shape);
+    }
+  }
 }

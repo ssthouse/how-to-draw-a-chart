@@ -1,6 +1,7 @@
 import Circle from "../shape/circle";
 import Line from "../shape/line";
 import Rect from "../shape/rect";
+import { Shape } from "../shape/shape";
 import Text from "../shape/text";
 
 function renderSvgStringToElement(svgString: string): SVGElement {
@@ -58,4 +59,22 @@ export function renderText(text: Text): SVGElement {
     <text x="${text.left}" y="${text.top}" style="${style}">Grumpy!</text>
   `;
   return renderSvgStringToElement(svgString);
+}
+
+export function renderShapes(shapes: Shape[]): SVGElement[] {
+  return shapes.map((shape) => {
+    if (shape instanceof Line) {
+      return renderLine(shape);
+    }
+    if (shape instanceof Circle) {
+      return renderCircle(shape);
+    }
+    if (shape instanceof Rect) {
+      return renderRect(shape);
+    }
+    if (shape instanceof Text) {
+      return renderText(shape);
+    }
+    return null;
+  });
 }

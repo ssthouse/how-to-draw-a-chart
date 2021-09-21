@@ -10,6 +10,11 @@ import Line from "./line";
 import Circle from "./circle";
 import Rect from "./rect";
 import Text from "./text";
+import { Shape } from "../../basic-chart/shape/shape";
+import LineShape from "../../basic-chart/shape/line";
+import CircleShape from "../../basic-chart/shape/circle";
+import Point from "../../basic-chart/shape/point";
+import Chart from "./chart";
 
 const DomChart: React.FC = () => {
   let { path, url } = useRouteMatch();
@@ -28,6 +33,9 @@ const DomChart: React.FC = () => {
         <li>
           <Link to={`${url}/text`}>Text</Link>
         </li>
+        <li>
+          <Link to={`${url}/chart`}>DOM Chart</Link>
+        </li>
       </ul>
       <Switch>
         <Route path={`${path}/line`}>
@@ -39,8 +47,8 @@ const DomChart: React.FC = () => {
         <Route path={`${path}/rect`}>
           <Rect />
         </Route>
-        <Route path={`${path}/text`}>
-          <Text />
+        <Route path={`${path}/chart`}>
+          <Chart />
         </Route>
       </Switch>
     </div>
